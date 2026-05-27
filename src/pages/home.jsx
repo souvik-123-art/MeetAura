@@ -50,7 +50,7 @@ const YourSelf = () => {
             </span>
           </h1>
           <h1 className="mt-6! !text-3xl md:text-6xl font-bold tracking-tight text-slate-700 leading-tight">
-            (Conceptualised by Meeta ...)
+            (Conceptualised by Meeta Bhandula)
           </h1>
 
           <p className="mx-auto! mt-6! max-w-3xl text-base md:text-lg text-slate-500 leading-relaxed">
