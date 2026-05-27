@@ -1,0 +1,122 @@
+.textAnalysisMain{
+    background-image: linear-gradient(to bottom right, #ECDAFF, #FDEBC3, #FFD3F2);
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.tamBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+
+}
+
+.tamBody h3{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #7948BB;
+}
+
+.tamBody img{
+    width: 200px;
+    height: 236px;
+    /* border-radius: 100%; */
+
+}
+
+.tamBody h2{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #7948BB;
+    margin-top: 10px;
+}
+
+.tamBody p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #575757;
+    margin-top: 10px;
+}
+
+
+.tamBody button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #7948BB;
+    margin-top: 10px;
+    border-radius: 9px;
+    padding: 10px 20px ;
+    border : solid 1px #7948BB;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.textAnalysisStep2Img{
+    max-width: 303px;
+    height: 300px;
+    border-radius: 12px;
+}
+
+.textAnalysisStep1Img{
+    width: 236px;
+    height: 236px;
+    border-radius: 100%;
+}
+
+.tamBody textarea{
+    /* background-color: #FFFFFF; */
+    border: solid 1px #662D91;
+    /* max-width: 479px; */
+    width: 80%;
+    border-radius: 9px;
+    padding: 10px;
+    height: 100px;
+    line-height: 100%;
+}
+
+.textAnalysisHistoryCard{
+    width: 100%;
+    max-width: 768px;
+    border-radius: 10px;
+    border : solid 1px #7948BB;
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+
+}
+
+.textAnalysisHistoryCard h3{
+    font-weight: 600;
+    font-size: 18px;
+    color: #575757;
+}
+
+.textAnalysisHistoryCard p{
+    font-weight: 500;
+    font-size: 16px;
+    color: #575757;
+}
+
+
+.textAnalysisHistoryCard span{
+    font-weight: 500;
+    font-size: 16px;
+    color: #0D76FF;
+    width: 100%;
+    align-items: end;
+    justify-content: end;
+    display: flex;
+    cursor: pointer;
+}

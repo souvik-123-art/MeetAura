@@ -1,0 +1,143 @@
+
+
+.container {
+  /* max-width: 1200px; */
+  // padding: 20px 100px;
+  // display: flex;
+  // justify-content: center;
+}
+
+.discover h2 {
+  font-size: 52px;
+  background: linear-gradient(#7948bb, #be92f9);
+  -webkit-background-clip: text;
+  /* -webkit-text-fill-color: transparent; */
+  color: transparent;
+  margin: 45px 0px;
+  font-weight: bold;
+  font-display: swap;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+//   font-family: vars.$secondary_font;
+  /* gap: 20px; */
+}
+
+.card {
+  width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+}
+
+.card h3 {
+  margin: 45px 29px 10px 4px;
+}
+
+.card p {
+  height: 80px;
+}
+
+.cardImage {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 15px;
+  left: 23px;
+}
+
+.card.blue {
+  /* background: #cce5ff; */
+  background: linear-gradient(180deg, #cde2f7 0%, #c6eff7 100%);
+}
+
+.auraSnap {
+  color: #7948bb;
+}
+
+.card.purple {
+  /* background: #e0c3fc; */
+  background: linear-gradient(206.94deg,
+      #ecdaff 26.26%,
+      #fdebc3 118.84%,
+      #ffd3f2 164.92%);
+}
+
+.card.green {
+  /* background: #c8e6c9; */
+  background: linear-gradient(180deg, #cdf7da 0%, #c8f7c6 100%);
+}
+
+.card.yellow {
+  /* background: #c8e6c9; */
+  background: linear-gradient(180deg, #f6f7cd 0%, #D6D85D 100%);
+}
+
+.card button {
+  // margin-top: auto; /* Push button to bottom */
+  padding: 15px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  width: calc(100% - 40px);
+}
+
+@media (max-width: 1024px) {
+  .cards {
+    /* display: flex; */
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 15px;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .cards {
+    /* flex-wrap: wrap; */
+    overflow-x: auto;
+    /* white-space: nowrap; */
+    scroll-snap-type: x mandatory;
+    padding-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    width: 250px;
+    scroll-snap-align: start;
+  }
+
+  /* .img{
+    height: 150px;
+  } */
+}
+
+@media(max-width: 480px) {
+
+  .container {
+    padding: 20px;
+  }
+
+  .discover h2{
+    font-size: 32px;
+  }
+}

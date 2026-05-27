@@ -1,0 +1,311 @@
+.textAnalysisMain {
+    background-image: linear-gradient(to bottom right, #ECDAFF, #FDEBC3, #FFD3F2);
+    /* padding: 20px; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.tamBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* height: 100vh; */
+    width: 100vw;
+
+}
+
+.tamBody h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #7948BB;
+}
+
+/* .tamBody img{
+    width: 236px;
+    height: 236px;
+    border-radius: 100%;
+
+} */
+
+.tamBody h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #7948BB;
+    margin-top: 10px;
+}
+
+.tamBody p {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: #575757;
+    margin-top: 10px;
+}
+
+
+.tamBody button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #7948BB;
+    margin-top: 10px;
+    border-radius: 9px;
+    padding: 10px 20px;
+    border: solid 1px #7948BB;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.textAnalysisStep2Img {
+    width: 303px;
+    height: 300px;
+    border-radius: 12px;
+}
+
+.textAnalysisStep1Img {
+    width: 236px;
+    height: 236px;
+    border-radius: 100%;
+    margin-bottom: 20px;
+}
+
+.tamBody textarea {
+    background-color: #FFFFFF;
+    border: solid 1px #662D91;
+    /* max-width: 479px; */
+    width: 100%;
+    border-radius: 9px;
+    padding: 10px;
+    height: 100px;
+    line-height: 100%;
+}
+
+.textAnalysisHistoryCard {
+    width: 50%;
+    border-radius: 10px;
+    border: solid 1px #7948BB;
+    background-color: #FFFFFF;
+    padding: 20px;
+    margin-bottom: 20px;
+    min-width: 300px;
+
+}
+
+.textAnalysisHistoryCard h3 {
+    font-weight: 600;
+    font-size: 18px;
+    color: #575757;
+}
+
+.textAnalysisHistoryCard p {
+    font-weight: 500;
+    font-size: 16px;
+    color: #575757;
+}
+
+
+.textAnalysisHistoryCard span {
+    font-weight: 500;
+    font-size: 16px;
+    color: #0D76FF;
+    width: 100%;
+    align-items: end;
+    justify-content: end;
+    display: flex;
+    cursor: pointer;
+}
+
+.mic {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    border: 2px solid #034798;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.mic img{
+    transform: scale(0.6);
+}
+
+
+.snapCam {
+    /* background-color: #662D91; */
+    /* width: 100vw;
+    height: 100vw; */
+    /* position: absolute;
+    top: 50%; 
+    left: 50%; */
+    /* transform: translate(-50%-50%); */
+    /* width: 100%; */
+
+}
+
+.snapCam {
+    width: 100%;
+    padding: 10px;
+    /* max-width: 300px; */
+}
+
+
+.recording-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.blink-dot {
+    height: 10px;
+    width: 10px;
+    background-color: red;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+.audio-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin: 12px 0;
+
+}
+
+.clear-audio-btn {
+    background: white;
+    border: 2px solid #9b59b6;
+    color: #9b59b6;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.clear-audio-btn:hover {
+    background: #9b59b6;
+    color: white;
+}
+
+
+
+.analyzing-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+}
+
+.analyzing-circle {
+    width: 200px;
+    height: 200px;
+}
+
+.analyzing-layer {
+    position: absolute;
+    width: 100px;
+    height: 60px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.analyzing-container .analyzing-text {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #7948BB;
+    margin-top: 10px;
+}
+
+.analyzing-container .analyzing-desc {
+    font-size: 20px;
+    color: #b6afaf;
+    font-style: italic;
+
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+}
+
+
+
+.textAnalysisHistoryCard {
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.textAnalysisHistoryCard:hover {
+    transform: scale(1.02);
+}
+
+.textAnalysisHistoryCard h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.textAnalysisHistoryCard p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+.textAnalysisStep2Img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    display: block;
+    margin-top: 10px;
+}
+
+.textAnalysisMain .textAnalysisPara {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color: #575757;
+    margin-top: 10px;
+    text-align: center;
+
+
+}
