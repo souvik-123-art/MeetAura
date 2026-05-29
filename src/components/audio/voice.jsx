@@ -29,7 +29,7 @@ export default function Index() {
   const [isFileUploaded, setIsFileUploaded] = useState(false);
   const [suggestedActivity, setSuggestedActivity] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [hasPaid, setHasPaid] = useState(false); // null = loading
+  const [hasPaid, setHasPaid] = useState(true); // null = loading
   const [payData, setPayData] = useState({});
 
   const [showModal, setShowModal] = useState(false);

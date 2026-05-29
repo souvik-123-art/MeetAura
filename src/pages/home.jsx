@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import selfImg1 from "../assets/image (1).png";
 import selfImg2 from "../assets/image (2).png";
 import selfImg from "../assets/image.png";
 import { useNavigate } from "react-router-dom";
+import UserDetailsModal from "../components/userDetails/userDetails";
 
 const YourSelf = () => {
   const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedPath, setSelectedPath] = useState("");
+  const [isEditMode, setIsEditMode] = useState(false);
+
 
   const cards = [
     {
@@ -34,9 +40,37 @@ const YourSelf = () => {
     },
   ];
 
+  
+
+
+  const handleStart = (path) => {
+    const userDetails = localStorage.getItem(
+      "mental_health_user_details"
+    );
+
+    if (userDetails) {
+      navigate(path);
+      return;
+    }
+
+    setSelectedPath(path);
+    setShowModal(true);
+  };
+
+  const handleModalSubmit = () => {
+  setShowModal(false);
+
+  if (!isEditMode && selectedPath) {
+    navigate(selectedPath);
+  }
+
+  setIsEditMode(false);
+};
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f6f9ff] via-[#fdfcff] to-[#eef4ff] px-4! py-10! md:px-10!">
       <div className="mx-auto! max-w-7xl">
+
         {/* Header */}
         <div className="text-center mb-14!">
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-200 bg-violet-50 px-4! py-2! text-sm font-medium text-violet-700 shadow-sm">
@@ -65,7 +99,8 @@ const YourSelf = () => {
           {cards.map((card, index) => (
             <div
               key={index}
-              onClick={() => navigate(card.path)}
+              // onClick={() => navigate(card.path)}
+              onClick={() => handleStart(card.path)}
               className="group relative overflow-hidden rounded-3xl border border-white/50 bg-white/80 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] cursor-pointer"
             >
               {/* Top Gradient */}
@@ -112,8 +147,24 @@ const YourSelf = () => {
               </div>
             </div>
           ))}
+          <div className="mt-6! flex justify-center">
+            <button
+              onClick={() => {
+                setIsEditMode(true);
+                setShowModal(true);
+              }}
+              className="inline-flex items-center gap-2 rounded-xl border border-[#8D48BB]/20 bg-white px-4! py-2! text-sm font-medium text-[#8D48BB] shadow-sm hover:bg-[#8D48BB]/5"
+            >
+              👤 Edit Profile
+            </button>
+          </div>
         </div>
       </div>
+      <UserDetailsModal
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        onSubmit={handleModalSubmit}
+      />
     </div>
   );
 };

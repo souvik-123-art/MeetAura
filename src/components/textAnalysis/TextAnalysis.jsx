@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { GET_METHOD } from "../../config/index";
+import { useNavigate } from "react-router-dom";
+
 
 // Import your sub-components
 import Transaction from "../transactions/Transactions";
@@ -11,10 +13,51 @@ import Step4 from "./Step4";
 import TextAnalysisImage from "./assets/textAnalysis.webp";
 
 export default function Index() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [suggestion, setSuggestion] = useState("");
-  const [hasPaid, setHasPaid] = useState(false); // null = loading
+  const [hasPaid, setHasPaid] = useState(true); // null = loading
   const [payData, setPayData] = useState({});
+  const [selectedEmotion, setSelectedEmotion] = useState("");
+
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
+  const [url, setUrl] = useState(getRandomNumber());
+
+  // useEffect(()=>{
+  //   setUrl(getRandomNumber());
+  // },[])
+
+
+
+  function getRandomNumber() {
+    return Math.floor(Math.random() * 110) + 1;
+  }
+
+
+  const emotions = [
+    { label: "Happy", emoji: "😊" },
+    { label: "Sad", emoji: "😔" },
+    { label: "Angry", emoji: "😠" },
+    { label: "Fear", emoji: "😨" },
+    { label: "Disgust", emoji: "🤢" },
+    { label: "Surprised", emoji: "😲" },
+    { label: "Confused", emoji: "😕" },
+    { label: "Neutral", emoji: "😐" },
+  ];
+
+  const handleContinue = () => {
+    localStorage.setItem(
+      "image_emotion_response",
+      JSON.stringify({
+        emotion: selectedEmotion,
+        timestamp: new Date().toISOString(),
+      })
+    );
+
+    setShowSuccessModal(true);
+    setUrl(getRandomNumber());
+  };
 
   // useEffect(() => {
   //   // Simulating API call for demonstration. Replace with your actual GET_METHOD
@@ -33,6 +76,137 @@ export default function Index() {
   if (!hasPaid) {
     return <Transaction setShowTransaction={setHasPaid} payData={payData} />;
   }
+
+
+
+  return (
+    <div className="w-full h-screen max-h-screen overflow-hidden flex flex-col">
+      {/* Header */}
+      <div className="text-center mb-4! flex-shrink-0">
+        {/* <h2 className="text-2xl md:text-3xl font-bold text-black">
+          What are you feeling?
+        </h2> */}
+
+        <p className="mt-2! text-black text-xl md:text-base">
+          Select the emotion that best matches your feeling after viewing the
+          image.
+        </p>
+      </div>
+
+      {/* Main Layout */}
+      <div className="grid md:grid-cols-[320px_1fr] gap-6 flex-1 min-h-0">
+        {/* Image */}
+        <div className="flex justify-center">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-3xl bg-[#8D48BB]/20 blur-xl" />
+
+            <img
+              loading="lazy"
+              src={`${import.meta.env.VITE_BACKEND_URL}/gimmick/textAnalysis/getMedia?id=${url}`}
+              alt="Emotion Assessment"
+              className="relative w-[260px] h-[260px] md:w-[300px] md:h-[300px] object-cover rounded-3xl border-2 border-[#8D48BB]/30 shadow-xl"
+              onError={(e) => {
+                e.target.src =
+                  "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?q=80&w=800&auto=format&fit=crop";
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Emotion Section */}
+        <div className="flex flex-col h-full min-h-0">
+          {/* Emotion Grid */}
+          <div className="flex-1 overflow-y-auto pr-2">
+            <div className="grid grid-cols-2 gap-3">
+              {emotions.map((emotion) => (
+                <button
+                  key={emotion.label}
+                  onClick={() => setSelectedEmotion(emotion.label)}
+                  className={`
+          rounded-2xl border transition-all duration-200
+          p-4!
+          ${selectedEmotion === emotion.label
+                      ? "bg-[#8D48BB] border-[#8D48BB] text-white shadow-lg scale-[1.02]"
+                      : "bg-white border-gray-200 text-gray-700 hover:border-[#8D48BB]"
+                    }
+        `}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-3xl">{emotion.emoji}</span>
+                    <span className="font-semibold">{emotion.label}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Push button to bottom */}
+          <div className="mt-auto pt-4!">
+            <button
+              disabled={!selectedEmotion}
+              onClick={handleContinue}
+              className={`
+        w-full rounded-2xl py-4!
+        font-semibold transition-all
+        ${selectedEmotion
+                  ? "bg-[#8D48BB] text-white hover:bg-[#7B3EA6]"
+                  : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                }
+      `}
+            >
+              {selectedEmotion
+                ? `Continue • ${selectedEmotion}`
+                : "Select an Emotion"}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {
+        showSuccessModal && (
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4!">
+            <div className="w-full max-w-md rounded-3xl bg-white p-8! text-center shadow-2xl">
+
+              <div className="text-7xl mb-4!">
+                🎉
+              </div>
+
+              <h2 className="text-3xl font-bold text-gray-800 mb-3!">
+                Congratulations!
+              </h2>
+
+              <p className="text-gray-500 mb-8!">
+                Thank you for participating.
+                <br />
+                Your response has been recorded successfully.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => {
+                    setSelectedEmotion("");
+                    setShowSuccessModal(false);
+                  }}
+                  className="flex-1 rounded-2xl bg-[#8D48BB] text-white py-3! font-semibold"
+                >
+                  🔄 Try Again
+                </button>
+
+                <button
+                  onClick={() => navigate("/")}
+                  className="flex-1 rounded-2xl border border-gray-300 py-3! font-semibold text-gray-700"
+                >
+                  🏠 Home
+                </button>
+              </div>
+
+            </div>
+          </div>
+        )
+      }
+
+    </div>
+  );
 
   // If paid, show the main application flow
   return (
